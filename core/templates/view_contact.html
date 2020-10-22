@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style type="text/css">
+    body
+    {
+      background: rgb(204,204,204); 
+      font-family: arial;
+      
+    } 
+    page[size="D1"]
+    {
+      width: 53.98mm;
+        height: 85mm ;
+      text-align: center; 
+      display: block;
+        margin: 0 auto;
+      background: white;
+      box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+      page-break-after: always;
+    } 
+    table
+    {
+      width: 100%;
+      margin: 0px;
+    }
+    table td
+    {     
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .header
+    {
+      height: 28mm;
+      background:red;
+    }
+    .content
+    {
+      height: 43mm;
+    }
+    .footer
+    {
+      height: 10mm;     
+      background:red;
+    }
+    .st_name
+    {
+      font-weight: bold;
+      font-size: 12pt; 
+    }     
+    .st_roll    
+    {
+      font-weight: bold;
+      font-size: 10pt; 
+    }
+    .st_photo
+    {
+      height: 34mm; 
+      vertical-align: middle;
+      /*background: rgb(204,204,204); */
+
+    }
+    .st_photo img
+    {
+      width: 25mm;  
+      height: 30mm; 
+
+      /*background: rgb(204,204,204); */
+
+    }
+    .st_address
+    {
+      font-weight: bold;
+      font-size: 9pt; 
+    }
+    .back_content
+    {
+      font-weight: bold;
+      font-size: 8pt;
+      text-align: left;
+      padding-left: 10px;
+    }
+    .principal_sign
+    {
+      font-weight: bold;
+      font-size: 8pt;
+      text-align: right;
+      padding-right: 10px;
+    }
+
+    .content_left
+    {
+      width: 50% ;
+      font-size: 9pt;
+      font-family: bold;
+      padding-right: 10px;
+    }
+    .content_right
+    {
+      width: 50%;
+      font-size: 9pt;
+      font-family: bold;
+      
+    }
+    .contact
+    {
+      width:90%;
+      text-align: left;
+      /*border: 1px solid  black;*/
+      font-size: 9pt;
+      font-style: bold;
+      padding-left: 5px;
+      font-family: arial;
+    }
+    .foo
+    {
+      font-family:arial;
+      text-align: center;
+      font-size:10pt ;
+    }
+    @media print {
+       body, page[size="D1"] {
+          margin: 0;
+          box-shadow: 0;          
+        }
+
+    }
+  </style>
+</head>
+<body>
+ 
+
+<page size="D1">
+  
+    <table  align="left">
+    
+    <tr>
+      <td> 
+
+                <table class="contact">
+                  <tr>
+      <td class="st_photo">
+          <img src="https://flasksample.s3-ap-southeast-1.amazonaws.com/Ganesh+1.JPG"  >
+      </td>
+    </tr>
+                  <tr>
+                    <td>Membership ID</td>
+                    <td>  :  {{ result.contact_id }}</td>
+                  </tr>
+                  <tr>
+                    <td> Name </td>
+                    <td>  : {{ result.name|default('') }}</td>
+                  </tr>
+                  <tr>
+                    <td>Mobile </td>
+                    <td>: {{ result.contact_number|default('') }}</td>
+                  </tr>
+                </table>
+
+      </td>
+    </tr>
+
+    
+   
+    
+  </table>
+  
+</page>
+</body>
+</html>
+
+

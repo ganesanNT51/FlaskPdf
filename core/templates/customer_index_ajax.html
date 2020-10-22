@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script src="../static/js/jquery.min.js" charset="utf-8"></script>
+      <script src="../static/js/jquery.validate.min.js" charset="utf-8"></script>
+      <script src="../static/js/popper.min.js" charset="utf-8"></script>
+        <!--using character set attribute in meta tag-->
+      <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="../static/css/style.css">    <title>Customer Index</title>
+</head>
+<body>
+  <br/><br/>
+  <table width="100%" style="font-size: 12px;">
+    <tbody>
+       <tr>
+        <td width="50%"><h3> Contact Index </h3></td>
+        <td width="50%" class="editdel" align="right"><a style="color: white;" href="{{ url_for('cust.Contact') }}"> <button class="btn btn-warning"  >  Add User </button> </a></td>
+       </tr>
+    </tbody>
+   </table>
+
+    {% for mesg in get_flashed_messages() %}
+    <div style="color: red; text-align: center;">
+      <h4>{{ mesg }}</h4>
+    </div>
+      {% endfor %}
+    <form method="post">
+    <table class="table  " style="font-size: 12px;border: 2px solid black;width: 100%; " >
+        <thead>  
+           <tr >
+               <th>Customer ID</th>
+              <th >Contact Number</th>
+              <th>Name</th>
+              <th>Interest</th>
+              <th>Plan</th>
+              <th>Delete</th>
+              <th>Edit</th>
+                 
+           </tr>
+         </thead>
+         {% for row in cust_data %}
+           <tbody>
+               <tr>
+                   <td >{{row.contact_id}}</td>
+                   <td >{{row.contact_number}}</td>
+                   <td >{{row.name}}</td>
+                   <td >{{row.interest}}</td>
+                   <td >{{row.plan}}</td>
+                   <td ><button type="button" name="delete_button"> <a  href="{{ url_for('cust.Delete_contact', id = row.contact_id) }}">
+                        Delete</a> </button></td>
+                   <td ><button type="button" name="edit_button" > <a  href="{{ url_for('cust.Edit_contact', id=row.contact_id) }}">
+                        Edit</a> </button> </td> 
+
+               </tr>
+        </tbody>
+        {% endfor %}
+        </table>
+        </form>
+</body>
+</html>

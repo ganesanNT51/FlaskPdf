@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <title>Bootstrap Example</title> 
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <!-- <script src="../static/js/jquery.min.js" charset="utf-8"></script>
+    <script src="../static/js/jquery.validate.js" charset="utf-8"></script>
+    <script src="../static/js/popper.min.js" charset="utf-8"></script> -->
+    <script src="../static/js/jquery.min.js" charset="utf-8"></script>
+  <script src="../static/js/jquery.validate.js" charset="utf-8"></script>
+  <script src="../static/js/popper.min.js" charset="utf-8"></script>
+  
+  <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="../static/css/style.css"> -->
+  
+  <link rel="stylesheet" type="text/css" href="../static/jcarousel/jcarousel.basic.css">
+  <script type="text/javascript" src="../static/jcarousel/jcarousel.basic.js"></script>
+  <script type="text/javascript" src="../static/jcarousel/jquery.jcarousel.min.js"></script>
+  <script type="text/javascript" src="../static/libs/jquery/jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="../static/css/iframe_style.css">
+
+
+
+
+  <style>
+      body {
+  margin: 0;
+  padding: 0;
+  max-height: 100%;
+}
+.column > div {
+  border: 1px solid blue;
+  min-height: 150px;
+}
+@media (min-width: 600px) {
+  .row {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+  }
+  .row > div {
+    flex-basis: 25%;
+  }
+  .row > div.main {
+    flex-basis: 50%;
+  }
+  .column {
+    display: flex;
+    flex-direction: column;
+  }
+  .column > div {
+    flex-basis: 100%;
+  }
+  .column.main > div {
+    flex-basis: 100%;
+  }
+}
+
+
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f51111;
+  color: black;
+
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+.embed-responsive {
+	
+	-webkit-transition: -webkit-transform .8s ease-in-out;
+			transition:         transform .8s ease-in-out;
+  }
+  .embed-responsive:hover {
+	-webkit-transform: rotate(180deg);
+			transform: rotate(180deg);
+  }
+  img {
+    flex-basis: 25%;
+	-webkit-transition: -webkit-transform .8s ease-in-out;
+			transition:         transform .8s ease-in-out;
+  }
+  img:hover {
+	-webkit-transform: rotate(360deg);
+			transform: rotate(360deg);
+  }
+
+  </style>
+</head>
+<body>
+    <div class="row">
+        <div class="column">
+          <div>
+            <table>
+              <tbody>
+                
+                {% for result in trade_images %}
+                <tr>
+                  <td>
+                    <img  src="{{ result.media_link|default('') }}"   height="250" />
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+        <div class="column main">
+          <div>
+            <table class="table table-bordered">
+                <thead>   
+                 
+                  <tr>
+                    <th scope="col" style="text-align: center;color:red;">{{ trade_data.trade_name|default('') }} 
+                  </th>
+                  </tr>
+                  
+                </thead>
+                <tbody>
+                    <tr>
+                      <td>
+                        
+                        <div class="wrapper">
+                          <div class="jcarousel-wrapper">
+                              <div class="jcarousel">
+                                <ul>
+                                  {% for results in trade_view %}
+                                    
+                                     {% if results.media_type == 'mp4' %}
+                                      <li><iframe  src="{{ results.media_link|default('') }}"  width="600" height="400"> 
+                                       </iframe>
+                                     </li>  
+                                    {% endif %}
+                                {% endfor %}
+                              </ul>
+                              </div>              
+                              <a href="#" class="jcarousel-control-prev" >&lsaquo;</a>
+                              <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+                              
+                              <p class="jcarousel-pagination">
+                              </p>
+                          </div>
+                      </div>  
+                    </td>
+                    </tr>
+                   
+                    <tr>
+                      
+                        <td> 
+                            <p>
+                              {{ trade_data.trade_desc|default('') }}    
+                            </p>
+                            
+                        </td>
+                        
+                    </tr>
+                    
+                    </tbody>
+                
+              </table>
+          </div>
+        </div>
+        <div class="column">
+          <div>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <img src="../static/images/biomedix_1.jpg"  height="250" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        </div>
+      </div>
+</body>
+</html>
